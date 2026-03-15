@@ -1,0 +1,26 @@
+<%- include("partials/header") %>
+
+    <section class="page-intro">
+        <h1><%= title %></h1>
+        <p>
+            Explore service project categories to find opportunities that match your
+            interests.
+        </p>
+    </section>
+
+    <section class="card-grid">
+        <% if (categories && categories.length > 0) { %>
+            <% categories.forEach(category => { %>
+                <article class="card">
+                    <h2><%= category.category_name %></h2>
+                </article>
+            <% }) %>
+        <% } else { %>
+            <article class="card">
+                <h2>No categories found</h2>
+                <p>Please check your database connection and category data.</p>
+            </article>
+        <% } %>
+    </section>
+
+<%- include("partials/footer") %>
