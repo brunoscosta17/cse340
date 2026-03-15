@@ -1,0 +1,18 @@
+{
+  "name": "my-service-site",
+  "version": "1.0.0",
+  "description": "Initial site creation for CSE 340",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2"
+  }
+}
