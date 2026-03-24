@@ -11,4 +11,41 @@ async function getAllOrganizations() {
   return result.rows;
 }
 
-module.exports = { getAllOrganizations };
+async function getOrganizationById(organizationId) {
+  const sql = `
+    SELECT
+      organization_id,
+      organization_name,
+      organization_description,
+      organization_image
+    FROM organizations
+    WHERE organization_id = $1;
+  `;
+
+  const result = await pool.query(sql, [organizationId]);
+  return result.rows[0];
+}
+
+async function getProjectsByOrganizationId(organizationId) {
+  const sql = `
+    SELECT
+      project_id,
+      project_title,
+      project_description,
+      project_location,
+      project_date,
+      organization_id
+    FROM projects
+    WHERE organization_id = $1
+    ORDER BY project_date ASC;
+  `;
+
+  const result = await pool.query(sql, [organizationId]);
+  return result.rows;
+}
+
+module.exports = {
+  getAllOrganizations,
+  getOrganizationById,
+  getProjectsByOrganizationId
+};

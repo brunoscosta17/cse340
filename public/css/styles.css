@@ -199,6 +199,34 @@ main.container {
     text-align: center;
 }
 
+.category-tags {
+    margin-top: 1rem;
+}
+
+.tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+
+.tag {
+    display: inline-block;
+    padding: 0.45rem 0.8rem;
+    background-color: #eaf2f8;
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    color: var(--primary-color);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.tag:hover,
+.tag:focus {
+    background-color: #d9eaf7;
+    text-decoration: none;
+}
+
 @media (max-width: 700px) {
     .site-header .container {
         flex-direction: column;

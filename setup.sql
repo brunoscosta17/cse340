@@ -59,11 +59,11 @@ VALUES
 
 INSERT INTO projects (organization_id, project_title, project_description, project_location, project_date)
 VALUES
-(1, 'Food Drive', 'Collect food donations for families in need.', 'Rexburg, ID', '2025-03-10'),
-(1, 'Clothing Donation Event', 'Organize and distribute donated clothes.', 'Idaho Falls, ID', '2025-03-15'),
-(2, 'Park Cleanup', 'Clean litter and beautify the city park.', 'Rexburg, ID', '2025-04-02'),
-(2, 'Tree Planting', 'Plant trees in public spaces.', 'Idaho Falls, ID', '2025-04-06'),
-(3, 'After School Tutoring', 'Tutor children in math and reading.', 'Rexburg, ID', '2025-05-01');
+(1, 'Food Drive', 'Collect food donations for families in need.', 'Rexburg, ID', CURRENT_DATE + INTERVAL '7 days'),
+(1, 'Clothing Donation Event', 'Organize and distribute donated clothes.', 'Idaho Falls, ID', CURRENT_DATE + INTERVAL '14 days'),
+(2, 'Park Cleanup', 'Clean litter and beautify the city park.', 'Rexburg, ID', CURRENT_DATE + INTERVAL '21 days'),
+(2, 'Tree Planting', 'Plant trees in public spaces.', 'Idaho Falls, ID', CURRENT_DATE + INTERVAL '28 days'),
+(3, 'After School Tutoring', 'Tutor children in math and reading.', 'Rexburg, ID', CURRENT_DATE + INTERVAL '35 days');
 
 -- =========================
 -- CATEGORIES
