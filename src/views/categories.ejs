@@ -4,29 +4,52 @@
         <h1>
             <%= title %>
         </h1>
+        <p>Browse service project categories and manage category information.</p>
         <p>
-            Explore service project categories to find opportunities that match your
-            interests.
+            <a href="/new-category">Add New Category</a>
         </p>
     </section>
 
-    <section class="card-grid">
-        <% if (categories && categories.length> 0) { %>
-            <% categories.forEach(category=> { %>
-                <article class="card">
-                    <h2>
-                        <a href="/category/<%= category.category_id %>">
-                            <%= category.category_name %>
-                        </a>
-                    </h2>
-                </article>
+    <% if (success_messages && success_messages.length> 0) { %>
+        <section class="flash-message success">
+            <% success_messages.forEach(message=> { %>
+                <p>
+                    <%= message %>
+                </p>
                 <% }) %>
-                    <% } else { %>
-                        <article class="card">
-                            <h2>No categories found</h2>
-                            <p>Please check your database connection and category data.</p>
-                        </article>
-                        <% } %>
-    </section>
+        </section>
+        <% } %>
 
-    <%- include("partials/footer") %>
+            <% if (error_messages && error_messages.length> 0) { %>
+                <section class="flash-message error">
+                    <% error_messages.forEach(message=> { %>
+                        <p>
+                            <%= message %>
+                        </p>
+                        <% }) %>
+                </section>
+                <% } %>
+
+                    <section class="list-section">
+                        <% if (categories && categories.length> 0) { %>
+                            <% categories.forEach(category=> { %>
+                                <article class="list-item">
+                                    <h2>
+                                        <a href="/category/<%= category.category_id %>">
+                                            <%= category.category_name %>
+                                        </a>
+                                    </h2>
+                                    <p>
+                                        <a href="/edit-category/<%= category.category_id %>">Edit Category</a>
+                                    </p>
+                                </article>
+                                <% }) %>
+                                    <% } else { %>
+                                        <article class="list-item">
+                                            <h2>No categories found</h2>
+                                            <p>Please check your database connection and category data.</p>
+                                        </article>
+                                        <% } %>
+                    </section>
+
+                    <%- include("partials/footer") %>

@@ -15,6 +15,14 @@ router.get("/organization/:id", organizationsController.showOrganizationDetailsP
 router.get("/categories", categoriesController.showCategoriesPage);
 router.get("/category/:id", categoriesController.showCategoryDetailsPage);
 
+// New category
+router.get("/new-category", categoriesController.showNewCategoryPage);
+router.post("/new-category", categoriesController.createCategory);
+
+// Edit category
+router.get("/edit-category/:id", categoriesController.showEditCategoryPage);
+router.post("/edit-category/:id", categoriesController.updateCategory);
+
 router.get("/projects", projectsController.showProjectsPage);
 router.get("/project/:id", projectsController.showProjectDetailsPage);
 

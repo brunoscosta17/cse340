@@ -42,8 +42,31 @@ async function getProjectsByCategoryId(categoryId) {
   return result.rows;
 }
 
+async function createCategory(categoryName) {
+  const sql = `
+    INSERT INTO categories (category_name)
+    VALUES ($1)
+    RETURNING category_id, category_name;
+  `;
+  const result = await pool.query(sql, [categoryName]);
+  return result.rows[0];
+}
+
+async function editCategory(categoryId, categoryName) {
+  const sql = `
+    UPDATE categories
+    SET category_name = $1
+    WHERE category_id = $2
+    RETURNING category_id, category_name;
+  `;
+  const result = await pool.query(sql, [categoryName, categoryId]);
+  return result.rows[0];
+}
+
 module.exports = {
   getAllCategories,
   getCategoryById,
-  getProjectsByCategoryId
+  getProjectsByCategoryId,
+  createCategory,
+  editCategory
 };
