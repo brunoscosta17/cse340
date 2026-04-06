@@ -1,7 +1,5 @@
 const express = require("express");
 const path = require("path");
-const session = require("express-session");
-const flash = require("connect-flash");
 require("dotenv").config();
 
 const app = express();
@@ -14,22 +12,6 @@ app.set("views", path.join(__dirname, "src", "views"));
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
-
-app.use(
-  session({
-    secret: process.env.SESSION_SECRET || "supersecretkey",
-    resave: false,
-    saveUninitialized: true,
-  })
-);
-
-app.use(flash());
-
-app.use((req, res, next) => {
-  res.locals.success_messages = req.flash("success");
-  res.locals.error_messages = req.flash("error");
-  next();
-});
 
 app.use("/", routes);
 
